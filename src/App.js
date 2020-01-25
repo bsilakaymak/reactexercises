@@ -1,24 +1,17 @@
 import React from 'react';
 import './App.css';
-import HobbyList from './components/HobbyList';
-import Guarantee from './components/Guarantee';
-import Counter from './components/Counter';
+import Friend from './components/Friend';
+import DogGallery from './components/DogGallery';
+import RandomJoke from './components/RandomJoke';
+
 function App() {
- 
+  
+  
   return (
     <div className="App">
-      <div style={{margin:'2em'}}>
-      <HobbyList/>
-      </div>
-
-      <div style={{padding:'1em'}}>
-        <Guarantee/>
-      </div>
-
-      <div style={{border:'1px solid pink', padding:'1em'}}>
-        <Counter/>
-      </div>
-   
+       <Friend/>
+       <DogGallery/>
+       <RandomJoke/>
     </div>
 
   );

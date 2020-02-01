@@ -1,8 +1,6 @@
 import React, {useState} from 'react';
-import DogButton from './DogButton';
 import DogPhoto from './DogPhoto';
-import Error from './Error';
-import Loading from './Loading';
+import Button from './Button';
 
 
 const dogGalleryStyle = {
@@ -33,15 +31,15 @@ const DogGallery = ()=>{
         })
     }
     if(hasError) {
-        return <Error/>
+        return <h1>Error!</h1>
     }else if(isLoading){
-        return <Loading/>
+        return <h1>Loading...</h1>
     }else{
         return(
             <div style={dogGalleryStyle}>
                 <h3>{indexMessage}</h3>
                 <DogPhoto dogPhoto = { dogPhoto }/>
-                <DogButton getDogPhoto = { getDogPhoto }/> 
+                <Button handleOnClick = { getDogPhoto } text = 'Click'/> 
             </div>
            
         )

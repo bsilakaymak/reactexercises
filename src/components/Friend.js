@@ -1,8 +1,7 @@
 import React, {useState} from 'react';
 import Button from './Button';
 import FriendProfile from './FriendProfile';
-import Error from './Error';
-import Loading from './Loading';
+
 
 
 const friendStyle = {
@@ -15,8 +14,7 @@ function Friend(){
     const [friend, setFriend] = useState({});
     const [isLoading, setLoading] = useState(false);
     const [hasError, setError] = useState(false);
-    const [indexMessage, setIndexMessage] = useState('Get your first friend by clicking');
-
+    const userMessage = friend.name ? "Click More!!" : "Get your first friend by clicking"
     function getFriend(){
         setLoading(true);
         fetch('https://www.randomuser.me/api?results=1')
@@ -24,9 +22,6 @@ function Friend(){
         .then(data=>{
           setFriend(data.results[0]);
           setLoading(false);
-          setIndexMessage('Click More!!');
-          console.log(friend);
-
         })
         .catch(err=>{
           setError(true);
@@ -35,15 +30,15 @@ function Friend(){
     }
 
     if(hasError) {
-      return <Error/>
+      return <h1>Error!!!</h1>
   }else if(isLoading){
-      return <Loading/>
+      return <h1>Loading...</h1>
   }else{
       return(
        <div style = {friendStyle}>
-         <h3>{indexMessage}</h3>
-         {indexMessage === 'Click More!!' && <FriendProfile friend = { friend }/>}
-         <Button getFriend = { getFriend }/>
+         <h3>{userMessage}</h3>
+         {friend.name && <FriendProfile friend = { friend }/>}
+         <Button handleOnClick = { getFriend } text = 'Click to get a friend'/>
 
        </div>      
       )

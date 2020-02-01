@@ -11,9 +11,9 @@ const buttonStyle = {
     height: "5em"
 }
 
-const Button = ({getFriend})=>{
+const Button = ({handleOnClick, text})=>{
     return (
-         <button style={buttonStyle} onClick = {getFriend}>Click to get a friend</button>
+         <button style={buttonStyle} onClick = {handleOnClick}>{text}</button>
     )
 }
 
